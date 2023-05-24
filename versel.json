@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "name": "cupt-timer",
+    "builds": [
+      {
+        "src": "cupt-timer.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "cupt-timer.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/",
+        "dest": "/cupt-timer.html"
+      }
+    ]
+  }
+  
