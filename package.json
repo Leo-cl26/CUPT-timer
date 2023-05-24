@@ -1,0 +1,12 @@
+{
+    "name": "cupt-timer",
+    "version": "1.0.0",
+    "description": "A countdown timer for CUPT.",
+    "main": "index.html",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": ["timer", "CUPT"],
+    "author": "Le",
+    "license": "MPL"
+}

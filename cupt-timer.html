@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CUPT Timer</title>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="1500" height="700">
+<defs>
+    <linearGradient id="button_surface" gradientUnits="objectBoundingBox"
+            x1="1" x2="1" y1="0" y2="1">
+        <stop stop-color="#eee" offset="0"/>
+        <stop stop-color="#444" offset="0.67"/>
+    </linearGradient>
+
+    <linearGradient id="virtual_light" gradientUnits="objectBoundingBox"
+            x1="0" x2="0" y1="0" y2="1">
+        <stop stop-color="#eee" offset="0" stop-opacity="1"/>
+        <stop stop-color="#333" offset="0.4" stop-opacity="0.5"/>
+    </linearGradient>
+</defs>
+
+<g id="timerList" transform="translate(50, 50)">
+<rect class="timer-background" x="1000" y="50" width="300" height="565" rx="5" ry="5" fill="#f2f2f2" stroke="#ccc" stroke-width="1"/>
+<text class="timer-1" x="1100" y="75" font-family="Tahoma" font-size="14" fill="#333">反方挑战    1:00</text>
+<line x1="1000" y1="90" x2="1300" y2="90" stroke="#ccc" stroke-width="1"/>
+<text class="timer-1" x="1100" y="115" font-family="Tahoma" font-size="14" fill="#333">正方准备    1:00</text>
+<line x1="1000" y1="130" x2="1300" y2="130" stroke="#ccc" stroke-width="1"/>
+<text class="timer-1" x="1100" y="155" font-family="Tahoma" font-size="14" fill="#333">正方报告    12:00</text>
+<line x1="1000" y1="170" x2="1300" y2="170" stroke="#ccc" stroke-width="1"/>	
+<text class="timer-1" x="1100" y="195" font-family="Tahoma" font-size="14" fill="#333">反方提问    2:00</text>
+<line x1="1000" y1="210" x2="1300" y2="210" stroke="#ccc" stroke-width="1"/>	
+<text class="timer-1" x="1100" y="235" font-family="Tahoma" font-size="14" fill="#333">反方准备    2:00</text>
+<line x1="1000" y1="250" x2="1300" y2="250" stroke="#ccc" stroke-width="1"/>
+<text class="timer-1" x="1100" y="275" font-family="Tahoma" font-size="14" fill="#333">反方报告    3:00</text>
+<line x1="1000" y1="290" x2="1300" y2="290" stroke="#ccc" stroke-width="1"/>
+<text class="timer-1" x="1100" y="315" font-family="Tahoma" font-size="14" fill="#333">正反方讨论    10:00</text>
+<line x1="1000" y1="330" x2="1300" y2="330" stroke="#ccc" stroke-width="1"/>
+<text class="timer-1" x="1100" y="355" font-family="Tahoma" font-size="14" fill="#333">评论方提问    3:00</text>
+<line x1="1000" y1="370" x2="1300" y2="370" stroke="#ccc" stroke-width="1"/>	
+<text class="timer-1" x="1100" y="395" font-family="Tahoma" font-size="14" fill="#333">评论方准备    2:00</text>
+<line x1="1000" y1="410" x2="1300" y2="410" stroke="#ccc" stroke-width="1"/>	
+<text class="timer-1" x="1100" y="435" font-family="Tahoma" font-size="14" fill="#333">评论方报告    4:00</text>
+<line x1="1000" y1="450" x2="1300" y2="450" stroke="#ccc" stroke-width="1"/>
+<text class="timer-1" x="1100" y="475" font-family="Tahoma" font-size="14" fill="#333">正方总结	    1:00</text>
+<line x1="1000" y1="490" x2="1300" y2="490" stroke="#ccc" stroke-width="1"/>	
+<text class="timer-1" x="1100" y="515" font-family="Tahoma" font-size="14" fill="#333">打分与讨论    4:00</text>
+<line x1="1000" y1="530" x2="1300" y2="530" stroke="#ccc" stroke-width="1"/>	
+<text class="timer-1" x="1100" y="555" font-family="Tahoma" font-size="14" fill="#333">评委点评    5:00</text>
+<line x1="1000" y1="570" x2="1300" y2="570" stroke="#ccc" stroke-width="1"/>	
+<text class="timer-1" x="1100" y="595" font-family="Tahoma" font-size="14" fill="#333">中场休息    10:00</text>
+</g>
+
+<circle id="background" cx="400" cy="400" r="300" stroke="black" stroke-width="0" fill="#eee"  onclick="startstop()"/>
+<path id="foreground" d = "M400,400 v-300 a300,300 0 1,1 0,0 z" fill="blue" onclick="startstop()" />
+<text id="timedisplay" x="800" y="80" style="font-family:Tahoma; font-size: 65pt; font-weight: bold;"> </text>
+<text id="phaselabel" x="285" y="80" style="font-family:Tahoma; font-size: 45pt; font-weight: bold;"> </text>
+<text id="warninglabel" x="80" y="80" style="font-family:Tahoma; font-size: 45pt; font-weight: bold; fill: red;"> </text>
+
+<style type="text/css">
+    g.button:hover{
+    opacity: 0.90;
+    }
+</style>
+<g class="button" cursor="pointer"
+        onmouseup="startstop()">
+    <rect class="button" cursor="pointer" x="810" y="110" rx="5"
+            ry="5" width="150" height="50"
+            fill="url(#button_surface)" stroke="#fff"/>
+    <rect x="812" y="112" rx="5" ry="5" width="146" height="46"
+            fill="url(#virtual_light)" stroke="#fff" stroke-opacity="0.4"/>
+    <text id="startstop_button_text" x="868" y="140" fill="white"
+            font-family="Tahoma" font-size="16" font-weight="500">
+        开始
+    </text>
+</g>
+
+<g class="button" cursor="pointer"
+        onmouseup="resetPhase()">
+    <rect class="button" cursor="pointer" x="810" y="210" rx="5"
+            ry="5" width="150" height="50"
+            fill="url(#button_surface)" stroke="#fff"/>
+    <rect x="812" y="212" rx="5" ry="5" width="146" height="46"
+            fill="url(#virtual_light)" stroke="#fff" stroke-opacity="0.4"/>
+    <text x="868" y="240" fill="white"
+            font-family="Tahoma" font-size="16" font-weight="500">
+        重置
+    </text>
+</g>
+
+<g class="button" cursor="pointer"
+        onmouseup="previousPhase()">
+    <rect class="button" cursor="pointer" x="810" y="410" rx="5"
+            ry="5" width="70" height="50"
+            fill="url(#button_surface)" stroke="#fff"/>
+    <rect x="812" y="412" rx="5" ry="5" width="66" height="46"
+            fill="url(#virtual_light)" stroke="#fff" stroke-opacity="0.4"/>
+    <text x="840" y="440" fill="white"
+            font-family="Tahoma" font-size="16" font-weight="500">
+        &#171;
+    </text>
+
+</g>
+
+
+<g class="button" cursor="pointer"
+        onmouseup="nextPhase()">
+    <rect class="button" cursor="pointer" x="890" y="410" rx="5"
+            ry="5" width="70" height="50"
+            fill="url(#button_surface)" stroke="#fff"/>
+    <rect x="892" y="412" rx="5" ry="5" width="66" height="46"
+            fill="url(#virtual_light)" stroke="#fff" stroke-opacity="0.4"/>
+    <text x="920" y="440" fill="white"
+            font-family="Tahoma" font-size="16" font-weight="500">
+        &#187;
+    </text>
+</g>
+
+
+
+<g class="button" cursor="pointer"
+        onmouseup="minus10()">
+    <rect class="button" cursor="pointer" x="810" y="310" rx="5"
+            ry="5" width="70" height="50"
+            fill="url(#button_surface)" stroke="#fff"/>
+    <rect x="812" y="312" rx="5" ry="5" width="66" height="46"
+            fill="url(#virtual_light)" stroke="#fff" stroke-opacity="0.4"/>
+    <text x="832" y="340" fill="white"
+            font-family="Tahoma" font-size="16" font-weight="500">
+        -10
+    </text>
+
+</g>
+
+
+<g class="button" cursor="pointer"
+        onmouseup="plus10()">
+    <rect class="button" cursor="pointer" x="890" y="310" rx="5"
+            ry="5" width="70" height="50"
+            fill="url(#button_surface)" stroke="#fff"/>
+    <rect x="892" y="312" rx="5" ry="5" width="66" height="46"
+            fill="url(#virtual_light)" stroke="#fff" stroke-opacity="0.4"/>
+    <text x="910" y="340" fill="white"
+            font-family="Tahoma" font-size="16" font-weight="500">
+        +10
+    </text>
+</g>
+</svg>
+<script src="cupt-timer.js"></script>
+</body>
+</html>
