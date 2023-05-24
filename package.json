@@ -2,7 +2,7 @@
     "name": "cupt-timer",
     "version": "1.0.0",
     "description": "A countdown timer for CUPT.",
-    "main": "cupt-timer.html",
+    "main": "index.html",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
